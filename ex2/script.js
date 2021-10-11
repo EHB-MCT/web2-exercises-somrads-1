@@ -1,4 +1,4 @@
-"user strict";
+"use strict";
 // import Team from './Teams';
 
 let list = [];
@@ -20,13 +20,11 @@ fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
 
 });
 
-
 window.onload = () => {
     console.log("alles loaded");
     setTimeout (buildList, 3000);
 
     function buildList(){
-        let html = "";
         pokemons.forEach(data => {
         
         const pokeContainer = document.getElementById("pokecard");
@@ -46,7 +44,6 @@ window.onload = () => {
 
   pokemonEl.innerHTML = pokeInnerHtml;
   pokeContainer.appendChild(pokemonEl);  
-
         });
         
     }   

@@ -1,10 +1,9 @@
 "use strict";
 
 class Team {
-
   constructor(teamname){
       console.log('Constructed!');
-      this.teamname = teamname;
+      this.teamname = "Brock";
       this.trainer = "Ash";
       this.roster = [];
 
@@ -16,4 +15,5 @@ class Team {
     
 }  
  }   
+
 export default Team;
