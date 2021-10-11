@@ -33,15 +33,15 @@ window.onload = () => {
     const pokemonEl = document.createElement('div');
     pokemonEl.classList.add('pokemon');
     const pokeInnerHtml = `
-  <div class="img-container">
+  <div class="card" style="width: 18rem;">
   <img src="${data.sprites.front_default}">
+  <div class="card-body">
+    <h5 class="card-title">#${data.id}</h5>
+    <h3 class="name">${data.name}</h3>
+    <h4 class="type">${data.types.map(type => type.type.name).join(", ")}</h4>
+    <button class="btn btn-outline-success">Add</button>
   </div>
-  <div class="pokelist">
-  <h1 class="id">${data.id}</h1>
-  <h3 class="name">${data.name}</h3>
-  <h4 class="type">${data.types.map(type => type.type.name).join(", ")}</h4>
-  <button class ="button">Add</button>
-  </div>
+</div>
   `;
 
   pokemonEl.innerHTML = pokeInnerHtml;

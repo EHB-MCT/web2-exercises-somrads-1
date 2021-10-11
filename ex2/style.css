@@ -1,2 +1,22 @@
+#pokecard{
+  display: flex;
+    flex-wrap: wrap;
+    align-items: space-between;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.pokemon{
+  transition: 0.4s ease-in-out;
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+.pokemon:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+}
 
 
