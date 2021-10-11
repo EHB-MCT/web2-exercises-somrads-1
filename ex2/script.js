@@ -1,5 +1,6 @@
 "user strict";
 // import Team from './Teams';
+
 let list = [];
 let pokemons= [];
 
@@ -20,12 +21,14 @@ fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
 });
 
 
-window.onload = function(){
+window.onload = () => {
     console.log("alles loaded");
     setTimeout (buildList, 3000);
 
     function buildList(){
+        let html = "";
         pokemons.forEach(data => {
+        
         const pokeContainer = document.getElementById("pokecard");
     const pokemonEl = document.createElement('div');
     pokemonEl.classList.add('pokemon');
@@ -37,9 +40,15 @@ window.onload = function(){
   <h1 class="id">${data.id}</h1>
   <h3 class="name">${data.name}</h3>
   <h4 class="type">${data.types.map(type => type.type.name).join(", ")}</h4>
+  <button class ="button">Add</button>
   </div>
   `;
-    pokeContainer.innerHTML = pokeInnerHtml;  
+
+  pokemonEl.innerHTML = pokeInnerHtml;
+  pokeContainer.appendChild(pokemonEl);  
+
         });
+        
     }   
 }
+
