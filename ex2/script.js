@@ -18,7 +18,6 @@ fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
     });
 
 });
-
 window.onload = () => {
     console.log("alles loaded");
     setTimeout (buildList, 3000);
