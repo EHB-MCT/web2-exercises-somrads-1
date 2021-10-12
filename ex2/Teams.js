@@ -1,5 +1,3 @@
-"use strict";
-
 class Team {
   constructor(teamname){
       console.log('Constructed!');

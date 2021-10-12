@@ -1,5 +1,4 @@
-"use strict";
-// import Team from './Teams';
+import Team from './Teams.js';
 
 let list = [];
 let pokemons= [];
