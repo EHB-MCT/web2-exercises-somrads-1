@@ -1,42 +1,60 @@
-const searchMovie = {
-          getInput() {
-           document.getElementById('searchform').addEventListener('submit', (e) => {
-              e.preventDefault();
-              const search = document.getElementById('inputTitle').value;
-              console.log(search);
-              this.getMovie(search);
-          });
-  
-  },
-  
-  
-  async getMovie(movie) {
-      fetch(`https://www.omdbapi.com/?t=${movie}&apikey=3ea53594`)
-          .then(response => {
-             return response.json()
-          })
-          .then(data => {
-              console.log(data);
-              let htmlString = `
-               <div class="card mb-3" style="max-width: 540px;">
+let counter = 0;
+
+window.onload = function () {
+    searchMovie();
+}
+
+function searchMovie() {
+    document.getElementById('searchform').addEventListener('submit', e => {
+        e.preventDefault();
+
+        let title = document.getElementById('inputTitle').value;
+    
+    fetch(`http://www.omdbapi.com/?t=${title}&apikey=1e66a1b6`)
+    .then(resp => resp.json())
+    .then(data => {
+    console.log(data);
+    console.log(data.Title);
+    showMovie(data)
+    })
+}   )
+}
+
+    function showMovie(data) {
+    let movie = 
+        `<div class="card mb-3" style="max-width: 540px;">
         <div class="row no-gutters">
-          <div class="col-md-4">
-            <img src="TBD" class="card-img" alt="...">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">${data.title}</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-          </div>
+        <div class="col-md-4">
+            <img src="${data.Poster}" class="card-img" alt="...">
         </div>
-      </div>
-              `;
-              document.getElementById('card').innerHTML = htmlString;
-          });
-  }
-  
-  }
-  
-  searchMovie.getInput();
+        <div class="col-md-8">
+            <div class="card-body">
+            <h5 class="card-title">${data.Title}</h5>
+            <p class="card-text">${data.Plot} </p>
+            <p class="card-text">    ${data.Director} </p>
+            <p class="card-text"><small class="text-muted">${data.Year}</small></p>
+            <p class="card-text"><small class="text-muted">${data.Runtime}</small></p>
+            <button id="button" type="submit" class="btn btn-primary mb-2">+</button>
+            </div>
+        </div>
+        </div>
+        </div>`
+
+        document.getElementById('movieCard').innerHTML= movie;
+        document.getElementById('button').addEventListener('click',
+        e => { 
+            e.preventDefault();
+            runtime(data.Runtime);
+        });
+    }
+
+
+    function runtime(e) {
+        let time = parseInt(e);
+        counter += time;
+
+        document.getElementById('counter').innerHTML= `${counter}minute`
+    }
+
+
+
