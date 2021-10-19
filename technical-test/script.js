@@ -2,8 +2,8 @@ window.onload = function () {
   getData();
 }
 
-async function getData(){
-  await fetch(`https://swapi.dev/api/films`)
+ function getData(){
+  fetch(`https://swapi.dev/api/films`)
   .then(resp => resp.json())
   .then(data => {
   console.log(data.results);
@@ -21,3 +21,7 @@ function showData(data){
   });
   
 }
+
+
+
+
